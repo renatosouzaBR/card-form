@@ -1,7 +1,7 @@
 'use client'
 
 import { InputHTMLAttributes } from "react";
-import { Question, Warning } from 'phosphor-react'
+import { Question, Warning } from '@phosphor-icons/react'
 
 import { theme } from "@/styles/stitches.config";
 
