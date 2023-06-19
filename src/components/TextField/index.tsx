@@ -17,9 +17,10 @@ import {
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errorMessage?: string;
+  onToolTipPress?: () => void;
 }
 
-export function TextField({ label, errorMessage, ...rest }: TextFieldProps) {
+export function TextField({ label, errorMessage, onToolTipPress, ...rest }: TextFieldProps) {
   const { colors } = theme;
 
   return (
@@ -27,14 +28,16 @@ export function TextField({ label, errorMessage, ...rest }: TextFieldProps) {
       {!!label &&
         <TextFieldLabelContainer>
           <TextFieldLabel htmlFor={rest.id}>
-            Número do cartão
+            {label}
           </TextFieldLabel>
 
-          <Question 
-            size={16} 
-            color={colors.gray300.toString()} 
-            weight="fill"
-          />
+          {!!onToolTipPress &&
+            <Question 
+              size={16} 
+              color={colors.gray300.toString()} 
+              weight="fill"
+            />
+          }
         </TextFieldLabelContainer>
       }
 

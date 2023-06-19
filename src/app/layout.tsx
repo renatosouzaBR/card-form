@@ -1,9 +1,9 @@
-import { Inter } from 'next/font/google'
+import { Source_Sans_3 } from 'next/font/google'
 
 import { getCssText } from '@/styles/stitches.config'
 import { globalStyles } from '@/styles/global';
 
-const inter = Inter({ subsets: ['latin'] })
+const source = Source_Sans_3({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Formulário de Cartão',
@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={source.className}>{children}</body>
     </html>
   )
 }
