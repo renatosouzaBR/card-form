@@ -1,5 +1,7 @@
-import './globals.css'
 import { Inter } from 'next/font/google'
+
+import { getCssText } from '@/styles/stitches.config'
+import { globalStyles } from '@/styles/global';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -8,6 +10,8 @@ export const metadata = {
   description: '',
 }
 
+globalStyles();
+
 export default function RootLayout({
   children,
 }: {
@@ -15,6 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
