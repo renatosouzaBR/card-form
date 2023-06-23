@@ -4,24 +4,51 @@ export const HomeContainer = styled('div', {
   width: '100%',
 
   'form': {
-    maxWidth: 492,
+    maxWidth: 736,
+    width: '100%',
     borderRadius: 8,
     padding: 32,
     margin: '0 auto',
     marginTop: 160,
     backgroundColor: '$gray800',
-    border: '1px solid $gray700'
+    border: '1px solid $gray700',
+
+    '@max660': {
+      maxWidth: 420,
+      marginTop: 80
+    },
+
+    '@max400': {
+      flex: 1,
+      borderRadius: 0,
+      padding: 22,
+      marginTop: 0,
+      border: 'none'
+    }
   }
 })
 
-export const InputsContainer = styled('div', {
+export const FormFields = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  gap: 24,
-  marginBottom: 48
-})
+  justifyContent: 'space-between',
+  marginBottom: 48,
+  gap: 32,
 
-export const InputsGroupRow = styled('div', {
-  display: 'flex',
-  gap: 16
+  '> div:nth-child(2)': {
+    marginTop: 20
+  },
+
+  '@max660': {
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 48,
+
+    '> div:nth-child(1)': {
+      order: 2
+    },
+
+    '> div:nth-child(2)': {
+      order: 1
+    },
+  }
 })

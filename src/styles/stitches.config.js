@@ -18,5 +18,9 @@ export const { styled, getCssText, globalCss, keyframes, theme } = createStitche
       gray800: '#1F2937',
       gray900: '#111827',
     }
+  },
+  media: {
+    max660: '(max-width: 660px)',
+    max400: '(max-width: 400px)',
   }
 });

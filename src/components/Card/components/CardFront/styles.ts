@@ -3,7 +3,9 @@ import { styled } from "@/styles/stitches.config";
 import bgImage from '@/assets/card-bg.png'
 
 export const CardContainer = styled('div', {
-  width: '28rem',
+  minWidth: '28rem',
+  maxWidth: '28rem',
+  width: '100%',
   height: '16.8rem',
   borderRadius: 16,
   border: '1px solid $gray700',
