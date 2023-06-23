@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { ContactlessPayment } from '@phosphor-icons/react'
 
-import visaLogo from '@/assets/visa-logo.png';
 import { theme } from "@/styles/stitches.config";
+import { Brand } from "@/components/Brand";
 
 import { 
   CVVContent, 
@@ -62,7 +61,7 @@ export function CardFront(props: CardFrontProps) {
   return (
     <CardContainer>
       <CardHeader>
-        <Image src={visaLogo.src} alt="" width={32} height={12} />
+        <Brand cardNumber={cardNumber} />
         <ContactlessPayment size={24} color={colors.gray50.toString()} />
       </CardHeader>
 
