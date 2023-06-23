@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { TextField } from "@/components/TextField";
+import { Card } from "@/components/Card";
 
 import { HomeContainer, InputsContainer, InputsGroupRow } from "./styles";
 
@@ -13,6 +14,13 @@ export default function Home() {
   return (
     <HomeContainer>
       <form action="submit" onSubmit={handleSubmit}>
+        <Card data={{
+          cardNumber: '12345678908',
+          holdersName: 'Renato Souza',
+          expirationDate: '1234',
+          cvvNumber: '180'
+        }} />
+
         <InputsContainer>
           <TextField 
             id="cardNumber"
