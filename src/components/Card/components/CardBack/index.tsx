@@ -1,5 +1,3 @@
-import { theme } from "@/styles/stitches.config";
-
 import { 
   CVVContent,
   CVVText,
@@ -12,9 +10,7 @@ interface CardFrontProps {
 }
 
 export function CardBack({ cvvNumber }: CardFrontProps) {
-  const { colors } = theme;
-
-  const filledCVV = cvvNumber.padEnd(3, '*')
+  const filledCVV = (cvvNumber ?? '').padEnd(3, '*')
 
   return (
     <CardFrontContainer>

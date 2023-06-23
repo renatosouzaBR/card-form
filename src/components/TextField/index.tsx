@@ -1,6 +1,6 @@
 'use client'
 
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, RefObject, forwardRef } from "react";
 import { Question, Warning } from '@phosphor-icons/react'
 
 import { theme } from "@/styles/stitches.config";
@@ -20,8 +20,9 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   onToolTipPress?: () => void;
 }
 
-export function TextField({ label, errorMessage, onToolTipPress, ...rest }: TextFieldProps) {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFieldComponent(props, ref) {
   const { colors } = theme;
+  const { label, errorMessage, onToolTipPress, ...rest } = props;
 
   return (
     <TextFieldContainer>
@@ -32,22 +33,22 @@ export function TextField({ label, errorMessage, onToolTipPress, ...rest }: Text
           </TextFieldLabel>
 
           {!!onToolTipPress &&
-            <Question 
-              size={16} 
-              color={colors.gray300.toString()} 
+            <Question
+              size={16}
+              color={colors.gray300.toString()}
               weight="fill"
             />
           }
         </TextFieldLabelContainer>
       }
 
-      <TextFieldInput {...rest} error={!!errorMessage} />
+      <TextFieldInput {...rest} error={!!errorMessage} ref={ref} />
 
       {!!errorMessage &&
         <TextFieldErrorContainer>
-          <Warning 
+          <Warning
             size={16}
-            color={colors.statusError.toString()} 
+            color={colors.statusError.toString()}
             weight="fill"
           />
           <TextFieldErrorText>{errorMessage}</TextFieldErrorText>
@@ -55,4 +56,4 @@ export function TextField({ label, errorMessage, onToolTipPress, ...rest }: Text
       }
     </TextFieldContainer>
   )
-}
+})

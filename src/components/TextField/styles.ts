@@ -52,13 +52,18 @@ export const TextFieldInput = styled('input', {
 
 export const TextFieldErrorContainer = styled('div', {
   display: 'flex',
-  alignItems: 'center',
   gap: 6,
   marginTop: 4,
+
+  'svg': {
+    marginTop: 1.8
+  }
 })
 
 export const TextFieldErrorText = styled('span', {
   fontSize: '1.4rem',
   fontWeight: '400',
-  color: '$statusError'
+  color: '$statusError',
+  flex: 1,
+  flexWrap: 'wrap'
 })

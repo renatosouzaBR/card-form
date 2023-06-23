@@ -25,8 +25,8 @@ export function CardFront(props: CardFrontProps) {
   const { colors } = theme;
   const { expirationDate, cardNumber, holdersName } = props;
 
-  const filledCardNumber = cardNumber.padEnd(16, '*');
-  const filledExpirationDate = expirationDate.padEnd(4, '*');
+  const filledCardNumber = (cardNumber ?? '').padEnd(16, '*');
+  const filledExpirationDate = (expirationDate ?? '').replaceAll('/', '').padEnd(4, '*');
 
   function fillCardNumberMask() {
     let groupData: JSX.Element[] = [];
@@ -72,15 +72,15 @@ export function CardFront(props: CardFrontProps) {
 
         <div>
           <CardHoldersName empty={!holdersName}>
-            {holdersName ?? 'Seu nome aqui'}
+            {!holdersName ? 'Seu nome aqui' : holdersName}
           </CardHoldersName>
           
           <CVVContent>
-            {filledExpirationDate[0] === '*' ? <TextEmpty /> : expirationDate[0]}
-            {filledExpirationDate[1] === '*' ? <TextEmpty /> : expirationDate[1]}
+            {filledExpirationDate[0] === '*' ? <TextEmpty /> : filledExpirationDate[0]}
+            {filledExpirationDate[1] === '*' ? <TextEmpty /> : filledExpirationDate[1]}
             /
-            {filledExpirationDate[2] === '*' ? <TextEmpty /> : expirationDate[2]}
-            {filledExpirationDate[3] === '*' ? <TextEmpty /> : expirationDate[3]}
+            {filledExpirationDate[2] === '*' ? <TextEmpty /> : filledExpirationDate[2]}
+            {filledExpirationDate[3] === '*' ? <TextEmpty /> : filledExpirationDate[3]}
           </CVVContent>
         </div>
       </CardData>

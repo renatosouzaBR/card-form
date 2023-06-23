@@ -15,11 +15,9 @@ const MASTER_REGEX = /^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6]
 
 export function Brand({ cardNumber }: BrandProps) {
   function creditCardFlag(cardNumber: string) {
-    if (!cardNumber) return null;
+    const onlyNumbers = cardNumber?.replace(/\D/g, '').substring(0, 8);
 
-    const onlyNumbers = cardNumber.replace(/\D/g, '').substring(0, 8);
-
-    if (onlyNumbers.match(VISA_REGEX)) {
+    if (onlyNumbers?.match(VISA_REGEX)) {
       return <Image 
         src={visaLogo.src} 
         width={visaLogo.width} 
@@ -28,7 +26,7 @@ export function Brand({ cardNumber }: BrandProps) {
       />
     }
     
-    if (onlyNumbers.match(MASTER_REGEX)) {
+    if (onlyNumbers?.match(MASTER_REGEX)) {
       return <Image
         src={masterLogo.src}
         width={masterLogo.width}

@@ -32,7 +32,7 @@ export const CardHeader = styled('div', {
 export const CardData = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 12,
+  gap: 24,
 
   '& > div': {
     display: 'flex',
