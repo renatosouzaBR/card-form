@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react';
 import { ContactlessPayment } from '@phosphor-icons/react'
 
 import { theme } from "@/styles/stitches.config";
@@ -15,7 +16,7 @@ import {
   TextEmpty
 } from "./styles";
 
-interface CardFrontProps {
+interface CardFrontProps extends HTMLAttributes<HTMLDivElement> {
   cardNumber: string;
   holdersName: string;
   expirationDate: string;
@@ -23,7 +24,7 @@ interface CardFrontProps {
 
 export function CardFront(props: CardFrontProps) {
   const { colors } = theme;
-  const { expirationDate, cardNumber, holdersName } = props;
+  const { expirationDate, cardNumber, holdersName, ...rest } = props;
 
   const filledCardNumber = (cardNumber ?? '').padEnd(16, '*');
   const filledExpirationDate = (expirationDate ?? '').replaceAll('/', '').padEnd(4, '*');
@@ -59,7 +60,7 @@ export function CardFront(props: CardFrontProps) {
   }
 
   return (
-    <CardContainer>
+    <CardContainer {...rest}>
       <CardHeader>
         <Brand cardNumber={cardNumber} />
         <ContactlessPayment size={24} color={colors.gray50.toString()} />

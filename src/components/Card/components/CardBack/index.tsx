@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "react";
+
 import { 
   CVVContent,
   CVVText,
@@ -5,15 +7,15 @@ import {
   TextEmpty
 } from "./styles";
 
-interface CardFrontProps {
+interface CardFrontProps extends HTMLAttributes<HTMLDivElement> {
   cvvNumber: string;
 }
 
-export function CardBack({ cvvNumber }: CardFrontProps) {
+export function CardBack({ cvvNumber, ...rest }: CardFrontProps) {
   const filledCVV = (cvvNumber ?? '').padEnd(3, '*')
 
   return (
-    <CardFrontContainer>
+    <CardFrontContainer {...rest}>
       <CVVContent>
         <CVVText>
           {filledCVV[0] === "*" ? <TextEmpty /> : filledCVV[0]}
